@@ -466,7 +466,7 @@ class Controle:
                     df.to_csv(temp_path,encoding='UTF-8')
                     
                     #bot.ti@demarchibrasil.com.br
-                    temp_dict={'To':['eduardo.marfim@demarchibrasil.com.br'],'CC':[''],'Anexo':[temp_path]}
+                    temp_dict={'To':['bot.ti@demarchibrasil.com.br'],'CC':[''],'Anexo':[temp_path]}
                     mensagem=f'Dados do dia {dt_now}'
                     gmail.Enviar(assunto=assunto,mensagem=mensagem,info=temp_dict)
                     os.remove(temp_path)                    
