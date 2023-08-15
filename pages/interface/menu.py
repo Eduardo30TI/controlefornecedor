@@ -1,12 +1,13 @@
 import streamlit as st
 from .importador import Importador
 from .agenda import Agendamento
+from .manual import Controle
 import socket as s
 import shutil
 from streamlit_js_eval import streamlit_js_eval
 import os
 
-telas=['Importador XML','Agenda']
+telas=['Importador XML','Agenda','Controle de Agenda']
 
 class Menu:
 
@@ -42,7 +43,14 @@ class Menu:
                 tela=Agendamento(val)
                 tela.main()
 
-                pass            
+                pass
+
+            elif val=='Controle de Agenda':
+
+                tela=Controle(val)
+                tela.main()
+
+                pass                       
 
             pass
 
@@ -51,7 +59,6 @@ class Menu:
             IP=s.gethostbyname(s.gethostname())
             path_base=os.path.join(os.getcwd(),IP)
             shutil.rmtree(path_base)
-
                         
             streamlit_js_eval(js_expressions='parent.window.location.reload()')
 
