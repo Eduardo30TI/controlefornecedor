@@ -194,7 +194,7 @@ class Controle:
 
                         temp_path=os.path.join(os.getcwd(),IP,f'Consolidado.csv')
                         df=sql.GetDataframe('SELECT * FROM controle')
-                        df.to_csv(temp_path,encoding='UTF-8')
+                        df.to_csv(temp_path,encoding='UTF-8',index=False)
                         
                         #bot.ti@demarchibrasil.com.br
                         temp_dict={'To':['bot.ti@demarchibrasil.com.br'],'CC':[''],'Anexo':[temp_path]}
@@ -463,7 +463,7 @@ class Controle:
 
                     temp_path=os.path.join(os.getcwd(),IP,f'Consolidado.csv')
                     df=sql.GetDataframe('SELECT * FROM controle')
-                    df.to_csv(temp_path,encoding='UTF-8')
+                    df.to_csv(temp_path,encoding='UTF-8',index=False)
                     
                     #bot.ti@demarchibrasil.com.br
                     temp_dict={'To':['bot.ti@demarchibrasil.com.br'],'CC':[''],'Anexo':[temp_path]}

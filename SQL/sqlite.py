@@ -28,7 +28,7 @@ class SQL:
 
         pass
 
-    def Save(self,query):
+    def Save(self,query: str):
 
         with self.Connect() as connecting:
 
@@ -41,7 +41,7 @@ class SQL:
 
         pass
 
-    def Code(self,query):
+    def Code(self,query: str):
 
         with self.Connect() as connecting:
         
@@ -56,7 +56,7 @@ class SQL:
 
         pass
 
-    def GetDataframe(self,query):
+    def GetDataframe(self,query: str):
 
         with self.Connect() as connecting:
 
