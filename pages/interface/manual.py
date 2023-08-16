@@ -127,7 +127,7 @@ class Controle:
                 temp_dict['fornecedor']=st.selectbox('Fornecedor',options=lista,key='cb_forn')
 
                 col3,col4=st.columns(2)
-                temp_dict['agenda']=col3.date_input(label='Agendamento',format='DD/MM/YYYY',key='tab1_data')
+                temp_dict['agenda']=col3.date_input(label='Agendamento',key='tab1_data')
                 temp_dict['qtde']=col4.text_input('Qtde',key='qtde')
 
                 df=sql.GetDataframe('SELECT * FROM tipo')
