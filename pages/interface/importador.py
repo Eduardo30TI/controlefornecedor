@@ -110,7 +110,7 @@ class Importador:
 
             if len(df)>0:
 
-                dt_now=st.date_input('Data de Agendamento',format='DD/MM/YYYY')
+                dt_now=st.date_input('Data de Agendamento')
                 notas=Moeda.Numero(len(df['NFe'].unique().tolist()))
                 total=Moeda.FormatarMoeda(df['Total CMP'].sum())
                 total=f'R$ {total}'

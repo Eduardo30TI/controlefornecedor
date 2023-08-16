@@ -72,7 +72,7 @@ class Agendamento:
 
             st.header(self.titulo)
             sidebar=st.sidebar
-            dt_now=sidebar.date_input('Data da Agenda',format='DD/MM/YYYY')
+            dt_now=sidebar.date_input('Data da Agenda')
 
             df=df.loc[df['Agenda']==datetime.strftime(dt_now,'%Y-%m-%d')]
 

@@ -414,7 +414,7 @@ class Controle:
                 
                 if filtro=='DT_AGENDA':
 
-                    val=st.date_input(label='Data',format='DD/MM/YYYY',label_visibility='collapsed')
+                    val=st.date_input(label='Data',label_visibility='collapsed')
                     val=str(val)
 
                     pass
