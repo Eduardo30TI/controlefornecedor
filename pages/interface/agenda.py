@@ -76,6 +76,8 @@ class Agendamento:
 
             df=df.loc[df['Agenda']==datetime.strftime(dt_now,'%Y-%m-%d')]
 
+            btn1,btn2=st.columns(2)
+
             if len(df)<=0:
 
                 val=st.selectbox('Notas',options=[])
@@ -103,19 +105,18 @@ class Agendamento:
 
                 st.dataframe(df[['Código','Produto','Qtde','Unid. CMP','Valor Unitário','Total CMP']],use_container_width=True)
 
+                path_base=df.loc[df['NFe']==val,'Path'].values[-1]
+                arq=os.path.basename(path_base)
+
+                tree=ET.parse(path_base)
+                root=tree.getroot()
+
+                data=ET.tostring(root)
+                btn2.download_button('Download XML',data=data,file_name=arq,use_container_width=True)                
+
                 pass
-
-            btn1,btn2=st.columns(2)
-
+            
             btn=btn1.button('Receber',type='primary',use_container_width=True)
-            path_base=df.loc[df['NFe']==val,'Path'].values[-1]
-            arq=os.path.basename(path_base)
-
-            tree=ET.parse(path_base)
-            root=tree.getroot()
-
-            data=ET.tostring(root)
-            btn2.download_button('Download XML',data=data,file_name=arq,use_container_width=True)
 
             pass
 

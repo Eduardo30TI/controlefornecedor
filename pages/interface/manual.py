@@ -426,9 +426,13 @@ class Controle:
 
                     pass
 
-                df=df.loc[df[filtro].str.contains(val)]
+                if len(df)>0:
 
-                tabela=st.data_editor(df)
+                    df=df.loc[df[filtro].str.contains(val)]
+
+                    tabela=st.data_editor(df)
+
+                    pass
                 
                 btn=st.button('Salvar',type='primary',key='edit_btn')
 
