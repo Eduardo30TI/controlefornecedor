@@ -115,51 +115,52 @@ class Agendamento:
                 data=ET.tostring(root)
                 btn2.download_button('Download XML',data=data,file_name=arq,use_container_width=True)
 
+                if btn==True:
+
+                    if len(df)>0:
+
+                        dt_now=datetime.strftime(datetime.now(),'%d/%m/%Y %H:%M:%S')
+                        path_base=df.loc[df['NFe']==val,'Path'].values[-1]
+
+                        assunto=f'Nota: {val} - {dt_now}'
+
+                        temp_dict={'To':['compras@demarchibrasil.com.br'],'CC':[''],'Anexo':[path_base]}
+                        
+                        mensagem=f'nota: {val} recebida no dia {dt_now}'
+
+                        gmail.Enviar(assunto=assunto,mensagem=mensagem,info=temp_dict)
+
+                        querys=f"""
+
+                        DELETE FROM xml WHERE NOTA='{val}'
+
+                        """
+                        
+                        os.remove(path_base)
+                        sql.Save(querys)
+                        
+                        mensagem=st.success('Nota recebida com sucesso.')
+                        time.sleep(1)
+                        mensagem.empty()
+                        time.sleep(1)
+
+                        streamlit_js_eval(js_expressions='parent.window.location.reload()')
+
+                        pass
+
+                    else:
+
+                        mensagem=st.warning('Informe a nota fiscal')
+                        time.sleep(1)
+                        mensagem.empty()
+
+                        pass
+
+                    pass
+
+
                 pass
                      
-            pass
-
-        if btn==True:
-
-            if len(df)>0:
-
-                dt_now=datetime.strftime(datetime.now(),'%d/%m/%Y %H:%M:%S')
-                path_base=df.loc[df['NFe']==val,'Path'].values[-1]
-
-                assunto=f'Nota: {val} - {dt_now}'
-
-                temp_dict={'To':['compras@demarchibrasil.com.br'],'CC':[''],'Anexo':[path_base]}
-                
-                mensagem=f'nota: {val} recebida no dia {dt_now}'
-
-                gmail.Enviar(assunto=assunto,mensagem=mensagem,info=temp_dict)
-
-                querys=f"""
-
-                DELETE FROM xml WHERE NOTA='{val}'
-
-                """
-                
-                os.remove(path_base)
-                sql.Save(querys)
-                
-                mensagem=st.success('Nota recebida com sucesso.')
-                time.sleep(1)
-                mensagem.empty()
-                time.sleep(1)
-
-                streamlit_js_eval(js_expressions='parent.window.location.reload()')
-
-                pass
-
-            else:
-
-                mensagem=st.warning('Informe a nota fiscal')
-                time.sleep(1)
-                mensagem.empty()
-
-                pass
-
             pass
 
         pass
