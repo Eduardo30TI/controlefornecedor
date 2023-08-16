@@ -75,9 +75,7 @@ class Agendamento:
             dt_now=sidebar.date_input('Data da Agenda')
 
             df=df.loc[df['Agenda']==datetime.strftime(dt_now,'%Y-%m-%d')]
-
-            btn1,btn2=st.columns(2)
-
+            
             if len(df)<=0:
 
                 val=st.selectbox('Notas',options=[])
@@ -108,16 +106,17 @@ class Agendamento:
                 path_base=df.loc[df['NFe']==val,'Path'].values[-1]
                 arq=os.path.basename(path_base)
 
+                btn1,btn2=st.columns(2)
+                btn=btn1.button('Receber',type='primary',use_container_width=True)
+
                 tree=ET.parse(path_base)
                 root=tree.getroot()
 
                 data=ET.tostring(root)
-                btn2.download_button('Download XML',data=data,file_name=arq,use_container_width=True)                
+                btn2.download_button('Download XML',data=data,file_name=arq,use_container_width=True)
 
                 pass
-            
-            btn=btn1.button('Receber',type='primary',use_container_width=True)
-
+                     
             pass
 
         if btn==True:
