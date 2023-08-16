@@ -127,7 +127,7 @@ class Controle:
                 temp_dict['fornecedor']=st.selectbox('Fornecedor',options=lista,key='cb_forn')
 
                 col3,col4=st.columns(2)
-                temp_dict['agenda']=col3.date_input('Agendamento',format='DD/MM/YYYY',key='tab1_data')
+                temp_dict['agenda']=col3.date_input(label='Agendamento',format='DD/MM/YYYY',key='tab1_data')
                 temp_dict['qtde']=col4.text_input('Qtde',key='qtde')
 
                 df=sql.GetDataframe('SELECT * FROM tipo')
@@ -414,7 +414,7 @@ class Controle:
                 
                 if filtro=='DT_AGENDA':
 
-                    val=st.date_input('Data',format='DD/MM/YYYY',label_visibility='collapsed')
+                    val=st.date_input(label='Data',format='DD/MM/YYYY',label_visibility='collapsed')
                     val=str(val)
 
                     pass
